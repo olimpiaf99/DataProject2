@@ -577,7 +577,7 @@ def mqtt_device_demo(args):
         # Send events every second. State should not be updated as often
         client.publish(mqtt_topic, json.dumps(payload_device), qos=1)
         client.loop()
-        time.sleep(5)
+        time.sleep(1)
     # [END iot_mqtt_run]
 
 
