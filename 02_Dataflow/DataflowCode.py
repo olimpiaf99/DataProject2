@@ -44,7 +44,7 @@ def parse_json_message(message):
 class add_processing_time(beam.DoFn):
     def process(self, element):
         window_start = str(datetime.datetime.now())
-        output_data = {'aggTemperature': element, 'processingTime': window_start}
+        output_data = {'Datos': element, 'processingTime': window_start}
         output_json = json.dumps(output_data)
         yield output_json.encode('utf-8')
       
