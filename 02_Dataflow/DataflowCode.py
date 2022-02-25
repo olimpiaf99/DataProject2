@@ -47,11 +47,36 @@ class add_processing_time(beam.DoFn):
         output_data = {'aggTemperature': element, 'processingTime': window_start}
         output_json = json.dumps(output_data)
         yield output_json.encode('utf-8')
-
-class agg_temperature(beam.DoFn):
+      
+class agg_glucose(beam.DoFn):
     def process(self, element):
-        temp = element['temperature']
-        yield temp
+        gluc = element['glucosa']
+        yield gluc     
+        
+class agg_ritmo(beam.DoFn):
+    def process(self, element):
+        ritmo = element['ritmo_card']
+        yield ritmo   
+        
+class agg_tempcorp(beam.DoFn):
+    def process(self, element):
+        tempcorp = element['temp_corp']
+        yield tempcorp
+        
+class agg_dosisadmin(beam.DoFn):
+    def process(self, element):
+        dosis = element['dosis_admin']
+        yield dosis    
+        
+class agg_oxigeno(beam.DoFn):
+    def process(self, element):
+        oxig = element['oxigeno']
+        yield oxig   
+        
+class agg_pasos(beam.DoFn):
+    def process(self, element):
+        pasos = element['pasos']
+        yield pasos
 
 #Create Beam pipeline
 
@@ -73,7 +98,7 @@ def edemData(output_table):
 
         data = (
             #Read messages from PubSub
-            p | "Read messages from PubSub" >> beam.io.ReadFromPubSub(subscription=f"projects/cobalt-diorama-337709/subscriptions/{output_table}-sub", with_attributes=True)
+            p | "Read messages from PubSub" >> beam.io.ReadFromPubSub(subscription=f"projects/sound-berm-34221/subscriptions/{output_table}-sub", with_attributes=True)
             #Parse JSON messages with Map Function and adding Processing timestamp
               | "Parse JSON messages" >> beam.Map(parse_json_message)
         )
@@ -81,7 +106,7 @@ def edemData(output_table):
         #Part02: Write proccessing message to their appropiate sink
         #Data to Bigquery
         (data | "Write to BigQuery" >> beam.io.WriteToBigQuery(
-            table = f"cobalt-diorama-337709:edemDataset.{output_table}",
+            table = f"sound-berm-342219:edemDataset.{output_table}",
             schema = schema,
             create_disposition=beam.io.BigQueryDisposition.CREATE_IF_NEEDED,
             write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND
@@ -95,7 +120,7 @@ def edemData(output_table):
             | "WindowByMinute" >> beam.WindowInto(window.FixedWindows(60))
             | "MeanByWindow" >> beam.CombineGlobally(MeanCombineFn()).without_defaults()
             | "Add Window ProcessingTime" >> beam.ParDo(add_processing_time())
-            | "WriteToPubSub" >> beam.io.WriteToPubSub(topic="projects/cobalt-diorama-337709/topics/iotToCloudFunctions", with_attributes=False)
+            | "WriteToPubSub" >> beam.io.WriteToPubSub(topic="projects/sound-berm-34221/topics/iotToCloudFunctions", with_attributes=False)
         )
 
 if __name__ == '__main__':
