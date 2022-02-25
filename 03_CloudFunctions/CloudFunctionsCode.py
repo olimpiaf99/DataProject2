@@ -21,10 +21,10 @@ def pubsub_to_iot(event, context):
     device_id = os.environ['DEVICE_ID']
 
     #Logic for incoming data
-    room_temperature = range(17,23)
+    glucose_OK = range(90,120)
 
-    if message['aggTemperature'] in room_temperature:
-        print("Temperature OK. Nothing to set.")
+    if message['agg_glucose'] in glucose_OK:
+        print("Glucose OK. Nothing to set.")
         pass
     else:
 
@@ -52,7 +52,7 @@ def pubsub_to_iot(event, context):
 
         #Update device configuration
         '''https://cloud.google.com/iot/docs/how-tos/config/configuring-devices#iot-core-update-config-python'''
-        config = str(random.randint(17,21))
+        config = str(random.randint(90,120))
         config_data = config.encode('utf-8')
 
         client.modify_cloud_to_device_config(request={"name": device_path, "binary_data": config_data, "version_to_update": last_version})
