@@ -17,13 +17,28 @@
     },
     {
       "mode": "NULLABLE",
-      "name": "temperature",
+      "name": "Glucose",
       "type": "FLOAT"
     },
     {
       "mode": "NULLABLE",
-      "name": "humidity",
-      "type": "NUMERIC"
+      "name": "bpm",
+      "type": "FLOAT"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "ºC",
+      "type": "FLOAT"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "Dosis",
+      "type": "FLOAT"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "Oxígeno",
+      "type": "FLOAT"
     }
     ]
 }
