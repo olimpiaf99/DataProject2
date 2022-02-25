@@ -1,5 +1,5 @@
 #Cloud Function triggered by PubSub Event
-#When a temperature over 23ºC or under 17ºC is received, a IoT Core command will be throw.
+#When Glucose over 120 or under 90 is received, a IoT Core command will be throw.
 
 #Import libraries
 import base64, json, sys, os
