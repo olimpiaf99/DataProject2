@@ -116,7 +116,12 @@ def edemData(output_table):
 
         #Create a fixed window (1 min duration)
         (data 
-            | "Get temperature value" >> beam.ParDo(agg_temperature())
+            | "Get glucosa value" >> beam.ParDo(agg_glucose())
+            | "Get ritmo_card value" >> beam.ParDo(agg_ritmo())
+            | "Get temp_corp value" >> beam.ParDo(agg_tempcorp())
+            | "Get dosis_admin value" >> beam.ParDo(agg_dosisadmin())
+            | "Get oxigeno value" >> beam.ParDo(agg_oxigeno())
+            | "Get pasos value" >> beam.ParDo(agg_pasos())
             | "WindowByMinute" >> beam.WindowInto(window.FixedWindows(60))
             | "MeanByWindow" >> beam.CombineGlobally(MeanCombineFn()).without_defaults()
             | "Add Window ProcessingTime" >> beam.ParDo(add_processing_time())
