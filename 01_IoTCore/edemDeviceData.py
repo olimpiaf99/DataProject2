@@ -20,7 +20,7 @@ to the device's MQTT topic at a rate of one per second, and then exits.
 Before you run the sample, you must follow the instructions in the README
 for this sample.
 """
-pasosextra = 0
+
 # [START iot_mqtt_includes]
 import argparse
 import datetime
@@ -546,11 +546,8 @@ def mqtt_device_demo(args):
             "temp_corp": round(random.uniform(36.9,37.1),2),
             "dosis_admin" : 0,
             "oxigeno" : round(random.uniform(96,99),2),
-            "pasos" : pasos + pasosextra
             ################
         }
-
-        payload_device["pasos"] = 
         print("Publishing message {}/{}: '{}'".format(i, args.num_messages, payload_device))
         # [START iot_mqtt_jwt_refresh]
         seconds_since_issue = (datetime.datetime.now(tz=datetime.timezone.utc) - jwt_iat).seconds
