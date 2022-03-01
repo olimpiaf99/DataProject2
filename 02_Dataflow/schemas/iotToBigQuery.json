@@ -17,12 +17,12 @@
     },
     {
       "mode": "NULLABLE",
-      "name": "temperature",
+      "name": "glucosa",
       "type": "FLOAT"
     },
     {
       "mode": "NULLABLE",
-      "name": "humidity",
+      "name": "ritmo",
       "type": "NUMERIC"
     }
     ]
