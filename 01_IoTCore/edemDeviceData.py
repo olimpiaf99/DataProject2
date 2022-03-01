@@ -537,8 +537,8 @@ def mqtt_device_demo(args):
         payload_device = {
             "device_id": args.device_id,
             "timeStamp": str(datetime.datetime.now()),
-            "temperature": round(random.uniform(16,26),2),
-            "humidity": round(random.uniform(39,61),2)
+            "glucosa": round(random.uniform(80,120),2),
+            "ritmo": round(random.uniform(60,180),2)
         }
         print("Publishing message {}/{}: '{}'".format(i, args.num_messages, payload_device))
         # [START iot_mqtt_jwt_refresh]
