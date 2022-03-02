@@ -22,8 +22,18 @@
     },
     {
       "mode": "NULLABLE",
-      "name": "ritmo",
+      "name": "ritmo_card",
       "type": "NUMERIC"
-    }
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "temp_corp",
+        "type": "NUMERIC"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "oxigeno",
+        "type": "NUMERIC"
+      }
     ]
 }
