@@ -29,11 +29,21 @@
         "mode": "NULLABLE",
         "name": "temp_corp",
         "type": "NUMERIC"
-      },
-      {
+    },
+    {
         "mode": "NULLABLE",
         "name": "oxigeno",
         "type": "NUMERIC"
-      }
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "pasos",
+        "type": "INTEGER"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "dosis",
+        "type": "INTEGER"
+    }
     ]
 }
