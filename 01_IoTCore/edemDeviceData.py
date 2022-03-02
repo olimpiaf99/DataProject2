@@ -495,6 +495,8 @@ def mqtt_device_demo(args):
     # [START iot_mqtt_run]
     global minimum_backoff_time
     global MAXIMUM_BACKOFF_TIME
+    pasos=0
+    dosis=0
 
     # Publish to the events or state topic based on the flag.
     sub_topic = "events" if args.message_type == "event" else "state"
@@ -540,9 +542,14 @@ def mqtt_device_demo(args):
             "glucosa": round(random.uniform(80,120),2),
             "ritmo_card": round(random.uniform(60,180),2),
             "temp_corp": round(random.uniform(36,38),2),
-            "oxigeno": round(random.uniform(90,100),2)
+            "oxigeno": round(random.uniform(90,100),2),
+            "pasos": pasos+ round(random.randint(0,250),0),
+            "dosis": dosis 
             
         }
+        pasos= payload_device.get("pasos")
+        if  payload_device.get("glucosa")>110:
+            dosis=dosis+1
         print("Publishing message {}/{}: '{}'".format(i, args.num_messages, payload_device))
         # [START iot_mqtt_jwt_refresh]
         seconds_since_issue = (datetime.datetime.now(tz=datetime.timezone.utc) - jwt_iat).seconds
