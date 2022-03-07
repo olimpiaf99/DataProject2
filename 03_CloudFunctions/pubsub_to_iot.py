@@ -1,7 +1,4 @@
-#EDEM SERVERLESS PART 02
-
 #Cloud Function triggered by PubSub Event
-#When a temperature over 25ºC or under 17ºC is received, a IoT Core command will be throw.
 
 #Import libraries
 import base64, json, sys, os
@@ -11,10 +8,11 @@ import random
 #Read from PubSub
 def pubsub_to_iot(event, context):
     #Read message from Pubsub (decode from Base64)
-    '''https://cloud.google.com/functions/docs/calling/pubsub#functions_calling_pubsub-python'''
+    pubsub_message = base64.b64decode(event['data']).decode('utf-8')
 
     #Load json
-    
+    message = json.loads(pubsub_message)
+
     #Dealing with environment variables
     project_id = os.environ['PROJECT_ID']
     cloud_region = os.environ['REGION_ID']
@@ -22,21 +20,38 @@ def pubsub_to_iot(event, context):
     device_id = os.environ['DEVICE_ID']
 
     #Logic for incoming data
-    room_temperature = range(17,23)
+    room_glucosa = range(70,140)
 
-    if message['aggTemperature'] in room_temperature:
-        print("Temperature OK. Nothing to set.")
+    if message['aggGlucosa'] in room_glucosa:
+        print("Glucosa OK")
         pass
     else:
 
         #IoT Client
         client = iot_v1.DeviceManagerClient()
         
-        #Send Command to IoT Device
-        '''https://cloud.google.com/iot/docs/how-tos/commands#api'''
+        #Execute IoT Command
+        '''https://cloud.google.com/iot/docs/how-tos/commands#iot-core-send-command-python'''
+        device_path = client.device_path(project_id, cloud_region, registry_id, device_id)
+
+        command = "Administrando dosis"
+        data = command.encode('utf-8')
+
+        client.send_command_to_device(request={"name": device_path, "binary_data": data})
 
         #Check for last version updated
         '''https://cloud.google.com/iot/docs/how-tos/config/configuring-devices#iot-core-get-config-python'''
+        configs = client.list_device_config_versions(request={"name": device_path})
+        configs_list = []
+
+        for item in configs.device_configs:
+            configs_list.append(item.version)
+        
+        last_version = max(configs_list)
 
         #Update device configuration
         '''https://cloud.google.com/iot/docs/how-tos/config/configuring-devices#iot-core-update-config-python'''
+        config = "Dosis administrada"
+        config_data = config.encode('utf-8')
+
+        client.modify_cloud_to_device_config(request={"name": device_path, "binary_data": config_data, "version_to_update": last_version})
