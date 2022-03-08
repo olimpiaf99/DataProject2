@@ -1,0 +1,49 @@
+{
+    "fields": [
+    {
+      "mode": "NULLABLE",
+      "name": "device_id",
+      "type": "STRING"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "timeStamp",
+      "type": "STRING"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "processingTime",
+      "type": "STRING"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "glucosa",
+      "type": "FLOAT"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "ritmo_card",
+      "type": "NUMERIC"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "temp_corp",
+        "type": "NUMERIC"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "oxigeno",
+        "type": "NUMERIC"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "pasos",
+        "type": "INTEGER"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "dosis",
+        "type": "INTEGER"
+    }
+    ]
+}
