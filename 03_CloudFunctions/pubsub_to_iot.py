@@ -20,7 +20,7 @@ def pubsub_to_iot(event, context):
     device_id = os.environ['DEVICE_ID']
 
     #Logic for incoming data
-    room_glucosa = range(70,140)
+    room_glucosa = range(60,130)
 
     if message['aggGlucosa'] in room_glucosa:
         print("Glucosa OK")
