@@ -26,7 +26,7 @@ GLUTECH es una startup tecnológica centrada en la mejora de la calidad de vida 
 #### Business challenges
 
 - Parte 01: Monitorizar el registro de las diferentes variables y mostrarlas en una aplicación.
-- Parte 02: Administrar la dosis de insulina necesaria al paciente en caso de registrarse un shock hipoglucémico.
+- Parte 02: Administrar la dosis de insulina necesaria al paciente en caso de registrarse un shock hiperglucémico.
 
 #### Data Architecture
 
@@ -161,7 +161,7 @@ python edemDeviceData.py \
 
 
 
-# Part 02: Event-driven architecture with Cloud Functions
+# Part 02: Arquitectura basada en eventos. Cloud Functions
 
 - Vamos a Cloud Functions y creamos una función eligiendo PubSub como activador y creamos las variables del entorno de ejecución.
 - Elegimos Python 3.9
@@ -169,7 +169,7 @@ python edemDeviceData.py \
   ![cloudfunctions](https://github.com/RicardoVRR/DataProject2./blob/main/DataProject2/CloudFunctions.png)
 - Click deploy
   
-Si el nivel de Glucosa está fuera de los parámetros establecidos como normales, **entre 70 y 140**. El dispositivo administra una dosis, mientras que si está dentro del rango envía un mensaje de **"Glucosa OK"**.
+Si el nivel de Glucosa está por encima de los parámetros establecidos como normales, **entre 70 y 130**. El dispositivo administra una dosis, mientras que si está dentro del rango envía un mensaje de **"Glucosa OK"**.
 
 
 ## Visualización
