@@ -181,4 +181,6 @@ Implementamos una app para que el paciente pueda ver en tiempo real sus métrica
 
 
 ## Vídeo demo
+  
+  [Arquitectura en Google Cloud](https://youtu.be/Rg-ubRqPy5E)
 
