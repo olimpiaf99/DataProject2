@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright 2017 Google Inc. 
+# Copyright 2017 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -539,17 +539,19 @@ def mqtt_device_demo(args):
         payload_device = {
             "device_id": args.device_id,
             "timeStamp": str(datetime.datetime.now()),
-            "glucosa": round(random.uniform(80,120),2),
+            "glucosa": round(random.uniform(60,140),2),
             "ritmo_card": round(random.uniform(60,180),2),
-            "temp_corp": round(random.uniform(36,38),2),
+            "temp_corp": round(random.uniform(36,37),2),
             "oxigeno": round(random.uniform(90,100),2),
-            "pasos": pasos+ round(random.randint(0,250),0),
+            "pasos": pasos+ round(random.randint(0,150),0),
             "dosis": dosis 
             
         }
         pasos= payload_device.get("pasos")
-        if  payload_device.get("glucosa")>110:
-            dosis=dosis+1
+        if  payload_device.get("glucosa")>130:
+            dosis=1
+        else:
+            dosis=0
         print("Publishing message {}/{}: '{}'".format(i, args.num_messages, payload_device))
         # [START iot_mqtt_jwt_refresh]
         seconds_since_issue = (datetime.datetime.now(tz=datetime.timezone.utc) - jwt_iat).seconds
