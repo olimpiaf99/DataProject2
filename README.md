@@ -1,5 +1,5 @@
 # GLUTECH
-![logo](https://github.com/RicardoVRR/DataProject2./blob/main/DataProject2/Captura%20de%20pantalla%202022-03-08%20a%20las%207.03.43.png?raw=true)
+![logo](https://github.com/olimpiaf99/DataProject2/blob/main/4%20-%20Im%C3%A1genes/Logo.svg)
 
 # Data Project 2
 
@@ -30,7 +30,7 @@ GLUTECH es una startup tecnológica centrada en la mejora de la calidad de vida 
 
 #### Data Architecture
 
-![architecture](https://github.com/RicardoVRR/DataProject2./blob/main/DataProject2/Sin%20ti%CC%81tulo.svg)
+![architecture](https://github.com/olimpiaf99/DataProject2/blob/main/5%20-%20Arquitectura%20y%20diagrama/arquitectura.png)
 
 # Part 01: Procesamiento de datos Serverless con Dataflow
 
