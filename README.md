@@ -6,7 +6,7 @@
 ## Master en Data Analytics - EDEM
 ### Curso 2021/2022
 
-- Pablo Sanchez Saez
+- Pablo Sánchez Sáez
 - Galo Valle
 - Alfonso Monserrat
 - Olimpia Fuster
